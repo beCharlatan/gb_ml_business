@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Price Prediction Challenge</title>
+</head>
+<body>
+    <h1>Car Price Prediction Challenge</h1>
+    <hr>
+    <h2>Predict form</h2>
+    <form action="/predict" method="post">
+        <label for="Manufacturer">Manufacturer</label>
+        <select name="Manufacturer" id="Manufacturer">
+            <option value="HONDA">HONDA</option>
+        </select>
+        <br>
+        <br>
+
+        <label for="Model">Model</label>
+        <select name="Model" id="Model">
+            <option value="Fit">Fit</option>
+        </select>
+        <br>
+        <br>
+
+        <label for="Category">Category</label>
+        <select name="Category" id="Category">
+            <option value="Red">Hatchback</option>
+        </select>
+        <br>
+        <br>
+
+        <label for="Prodyear">Prod. year</label>
+        <input type="number" id="Prodyear" name="Prodyear" value="2006" />
+        <br>
+        <br>
+
+        <label for="Airbags">Airbags</label>
+        <input type="number" id="Airbags" name="Airbags" value="2" />
+        <br>
+        <br>
+
+        <label for="Fueltype">Fuel type</label>
+        <select name="Fueltype" id="Fueltype">
+            <option value="Petrol">Petrol</option>
+        </select>
+        <br>
+        <br>
+
+        <label for="Gearboxtype">Gear box type</label>
+        <select name="Gearboxtype" id="Gearboxtype">
+            <option value="Variator">Variator</option>
+        </select>
+        <br>
+        <br>
+
+        <label for="Drivewheels">Drive wheels</label>
+        <select name="Drivewheels" id="Drivewheels">
+            <option value="Front">Front</option>
+        </select>
+        <br>
+        <br>
+
+        <label for="Color">Color</label>
+        <select name="Color" id="Color">
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Blue">Blue</option>
+        </select>
+        <br>
+        <br>
+
+        <label for="Leatherinterior">Leather interior</label>
+        <input type="checkbox" id="Leatherinterior" name="Leatherinterior" />
+        <br>
+        <br>
+
+        <fieldset>
+            <legend>Wheel</legend>
+
+            <input type="radio" id="LeftWheel" name="Wheel" value="Left wheel" checked>
+            <label for="LeftWheel">Left wheel</label>
+
+            <input type="radio" id="RightWheel" name="Wheel" value="Right-hand drive">
+            <label for="RightWheel">Right-hand drive</label>
+        </fieldset>
+        <br>
+        <br>
+
+        <label for="Levy">Levy</label>
+        <input type="number" id="Levy" name="Levy" value="1000" />
+        <br>
+        <br>
+
+        <label for="Mileage">Mileage</label>
+        <input type="number" id="Mileage" name="Mileage" value="200000" />
+        <br>
+        <br>
+
+        <label for="Enginevolume">Engine volume</label>
+        <input type="number" id="Enginevolume" name="Enginevolume" value="1.3" step="0.1" />
+        <br>
+        <br>
+
+        <label for="Doors">Doors</label>
+        <select name="Doors" id="Doors">
+            <option value="2-3">2-3</option>
+            <option value="4-5">4-5</option>
+        </select>
+        <br>
+        <br>
+
+        <button type="submit">Submit</button>
+
+        <hr>
+
+        {% if predicted_df %}
+            <h2>Predicted object</h2>
+            <pre>{{predicted_df|safe}}</pre>
+        {% endif %}
+
+        {% if predicted_price %}
+            <h2>Predicted price: {{predicted_price}}</h2>
+            <a href="{{url_for('root')}}">Clear</a>
+        {% endif %}
+    </form>
+</body>
+</html>
